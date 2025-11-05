@@ -1,1 +1,553 @@
+<!doctype html>
+<html lang="id">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ruang Belajar Digital SMA Al Muslim</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+        body {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
 
+        .smooth-transition {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .nav-link {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .section-hidden {
+            display: none;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .icon-bounce:hover {
+            animation: bounce 0.6s ease;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body>
+  <div id="app" style="min-height: 100%; display: flex; flex-direction: column;"><!-- Header -->
+   <header id="header" style="padding: 2rem 1.5rem; text-align: center;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+     <div style="font-size: 3rem; margin-bottom: 0.5rem;">
+      🏫
+     </div>
+     <h1 id="siteTitle" style="font-size: 2.5rem; font-weight: bold; margin-bottom: 0.75rem;">Ruang Belajar Digital SMA Al Muslim</h1>
+     <p id="siteSubtitle" style="font-size: 1.1rem; opacity: 0.9; max-width: 800px; margin: 0 auto;">Memahami, Melakukan, dan Mengembangkan Potensi Melalui Teknologi, Budaya, dan Kepemimpinan</p>
+    </div>
+   </header><!-- Navigation -->
+   <nav id="navigation" style="padding: 1rem 1.5rem; border-top: 1px solid; border-bottom: 1px solid;">
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;"><button class="nav-link smooth-transition" onclick="showSection('beranda')" style="background: none; border: none; font-size: 1rem; font-weight: 600; cursor: pointer; padding: 0.5rem 0;">Beranda</button> <button class="nav-link smooth-transition" onclick="showSection('informatika')" style="background: none; border: none; font-size: 1rem; font-weight: 600; cursor: pointer; padding: 0.5rem 0;">💻 Informatika</button> <button class="nav-link smooth-transition" onclick="showSection('bahasa-jawa')" style="background: none; border: none; font-size: 1rem; font-weight: 600; cursor: pointer; padding: 0.5rem 0;">🎭 Bahasa Jawa</button> <button class="nav-link smooth-transition" onclick="showSection('leadership')" style="background: none; border: none; font-size: 1rem; font-weight: 600; cursor: pointer; padding: 0.5rem 0;">🌿 Leadership</button> <button class="nav-link smooth-transition" onclick="showSection('galeri')" style="background: none; border: none; font-size: 1rem; font-weight: 600; cursor: pointer; padding: 0.5rem 0;">📸 Galeri Siswa</button> <button class="nav-link smooth-transition" onclick="showSection('kontak')" style="background: none; border: none; font-size: 1rem; font-weight: 600; cursor: pointer; padding: 0.5rem 0;">💬 Kontak</button>
+    </div>
+   </nav><!-- Main Content -->
+   <main style="flex: 1; padding: 2rem 1.5rem;">
+    <div style="max-width: 1200px; margin: 0 auto;"><!-- Beranda Section -->
+     <section id="beranda" class="content-section fade-in">
+      <div style="text-align: center; margin-bottom: 3rem;">
+       <h2 style="font-size: 2rem; font-weight: bold; margin-bottom: 1rem;">Selamat Datang di Ruang Belajar Digital</h2>
+       <p style="font-size: 1.1rem; opacity: 0.8; max-width: 700px; margin: 0 auto;">Pilih mata pelajaran untuk memulai perjalanan belajar Anda</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 3rem;"><!-- Informatika Card -->
+       <div class="card-hover smooth-transition" id="cardInformatika" style="border-radius: 1rem; padding: 2rem; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+        <div class="icon-bounce" style="font-size: 4rem; margin-bottom: 1rem;">
+         💻
+        </div>
+        <h3 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 0.75rem;">Informatika</h3>
+        <p id="informatikaDescHome" style="opacity: 0.8; margin-bottom: 1.5rem;">Belajar tentang cara kerja komputer, logika algoritma, dan teknologi masa depan</p><button onclick="showSection('informatika')" class="smooth-transition" style="padding: 0.75rem 2rem; border-radius: 0.5rem; border: none; font-weight: 600; cursor: pointer;">Masuk Kelas</button>
+       </div><!-- Bahasa Jawa Card -->
+       <div class="card-hover smooth-transition" id="cardBahasaJawa" style="border-radius: 1rem; padding: 2rem; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+        <div class="icon-bounce" style="font-size: 4rem; margin-bottom: 1rem;">
+         🎭
+        </div>
+        <h3 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 0.75rem;">Bahasa Jawa</h3>
+        <p id="bahasaJawaDescHome" style="opacity: 0.8; margin-bottom: 1.5rem;">Melestarikan budaya Jawa melalui tembang, cerita, dan gelar wicara</p><button onclick="showSection('bahasa-jawa')" class="smooth-transition" style="padding: 0.75rem 2rem; border-radius: 0.5rem; border: none; font-weight: 600; cursor: pointer;">Masuk Kelas</button>
+       </div><!-- Leadership Card -->
+       <div class="card-hover smooth-transition" id="cardLeadership" style="border-radius: 1rem; padding: 2rem; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+        <div class="icon-bounce" style="font-size: 4rem; margin-bottom: 1rem;">
+         🌿
+        </div>
+        <h3 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 0.75rem;">Leadership</h3>
+        <p id="leadershipDescHome" style="opacity: 0.8; margin-bottom: 1.5rem;">Mengembangkan karakter kepemimpinan yang beretika, empatik, dan bertanggung jawab</p><button onclick="showSection('leadership')" class="smooth-transition" style="padding: 0.75rem 2rem; border-radius: 0.5rem; border: none; font-weight: 600; cursor: pointer;">Masuk Kelas</button>
+       </div>
+      </div>
+     </section><!-- Informatika Section -->
+     <section id="informatika" class="content-section section-hidden fade-in">
+      <div style="margin-bottom: 2rem;">
+       <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;"><span style="font-size: 3rem;">💻</span>
+        <h2 style="font-size: 2rem; font-weight: bold;">Informatika</h2>
+       </div>
+       <p id="informatikaDesc" style="font-size: 1.1rem; opacity: 0.8;">Belajar tentang cara kerja komputer, logika algoritma, dan teknologi masa depan</p>
+      </div>
+      <div style="display: grid; gap: 1.5rem;">
+       <div id="materiInformatika" style="border-radius: 0.75rem; padding: 1.5rem; border: 2px solid;">
+        <h3 style="font-size: 1.3rem; font-weight: bold; margin-bottom: 1rem;">📚 Materi Pembelajaran</h3>
+        <ul style="list-style: none; padding: 0; display: grid; gap: 0.75rem;">
+         <li style="padding: 0.75rem; border-radius: 0.5rem; border: 1px solid;">✓ Mail Merge &amp; Integrasi Aplikasi Perkantoran</li>
+         <li style="padding: 0.75rem; border-radius: 0.5rem; border: 1px solid;">✓ Sistem Operasi &amp; Manajemen File</li>
+         <li style="padding: 0.75rem; border-radius: 0.5rem; border: 1px solid;">✓ Algoritma Unplugged</li>
+         <li style="padding: 0.75rem; border-radius: 0.5rem; border: 1px solid;">✓ AI Edukatif &amp; Teknologi Masa Depan</li>
+        </ul>
+       </div>
+       <div id="toolsInformatika" style="border-radius: 0.75rem; padding: 1.5rem; border: 2px solid;">
+        <h3 style="font-size: 1.3rem; font-weight: bold; margin-bottom: 1rem;">🔗 Tools &amp; Simulasi</h3>
+        <div style="display: grid; gap: 0.75rem;"><a href="https://www.tinkercad.com" target="_blank" rel="noopener noreferrer" class="smooth-transition" style="padding: 1rem; border-radius: 0.5rem; text-decoration: none; display: block; border: 1px solid;"> <strong>Tinkercad</strong> - Desain 3D &amp; Simulasi Elektronik </a> <a href="https://scratch.mit.edu" target="_blank" rel="noopener noreferrer" class="smooth-transition" style="padding: 1rem; border-radius: 0.5rem; text-decoration: none; display: block; border: 1px solid;"> <strong>Scratch</strong> - Pemrograman Visual Interaktif </a> <a href="https://colab.research.google.com" target="_blank" rel="noopener noreferrer" class="smooth-transition" style="padding: 1rem; border-radius: 0.5rem; text-decoration: none; display: block; border: 1px solid;"> <strong>Google Colab</strong> - Python &amp; Data Science </a>
+        </div>
+       </div>
+       <div id="tugasInformatika" style="border-radius: 0.75rem; padding: 1.5rem; border: 2px solid;">
+        <h3 style="font-size: 1.3rem; font-weight: bold; margin-bottom: 1rem;">📝 Area Tugas</h3>
+        <p style="margin-bottom: 1rem; opacity: 0.8;">Unggah laporan, proyek coding, atau video presentasi Anda</p><button class="smooth-transition" style="padding: 0.75rem 1.5rem; border-radius: 0.5rem; border: none; font-weight: 600; cursor: pointer; width: 100%;">Upload Tugas</button>
+       </div>
+      </div>
+     </section><!-- Bahasa Jawa Section -->
+     <section id="bahasa-jawa" class="content-section section-hidden fade-in">
+      <div style="margin-bottom: 2rem;">
+       <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;"><span style="font-size: 3rem;">🎭</span>
+        <h2 style="font-size: 2rem; font-weight: bold;">Bahasa Jawa</h2>
+       </div>
+       <p id="bahasaJawaDesc" style="font-size: 1.1rem; opacity: 0.8;">Melestarikan budaya Jawa melalui tembang, cerita, dan gelar wicara</p>
+      </div>
+      <div style="display: grid; gap: 1.5rem;">
+       <div id="materiBahasaJawa" style="border-radius: 0.75rem; padding: 1.5rem; border: 2px solid;">
+        <h3 style="font-size: 1.3rem; font-weight: bold; margin-bottom: 1rem;">📚 Menu Materi</h3>
+        <ul style="list-style: none; padding: 0; display: grid; gap: 0.75rem;">
+         <li style="padding: 0.75rem; border-radius: 0.5rem; border: 1px solid;">🎎 Cerita Wayang &amp; Nilai Moral</li>
+         <li style="padding: 0.75rem; border-radius: 0.5rem; border: 1px solid;">🎵 Tembang Macapat</li>
+         <li style="padding: 0.75rem; border-radius: 0.5rem; border: 1px solid;">🎤 Gelar Wicara &amp; Upacara Adat</li>
+         <li style="padding: 0.75rem; border-radius: 0.5rem; border: 1px solid;">✍️ Bahasa Rinengga &amp; Unggah-Ungguh</li>
+        </ul>
+       </div>
+       <div id="latihanBahasaJawa" style="border-radius: 0.75rem; padding: 1.5rem; border: 2px solid;">
+        <h3 style="font-size: 1.3rem; font-weight: bold; margin-bottom: 1rem;">🎯 Latihan Bahasa</h3>
+        <p style="margin-bottom: 1rem; opacity: 0.8;">Uji pemahaman Anda dengan kuis interaktif</p>
+        <div style="padding: 1rem; border-radius: 0.5rem; border: 1px solid; margin-bottom: 1rem;">
+         <p style="font-weight: 600; margin-bottom: 0.5rem;">Contoh: Padanan kata "Mangga" dalam krama inggil adalah...</p>
+         <div style="display: grid; gap: 0.5rem; margin-top: 1rem;"><button class="smooth-transition" style="padding: 0.5rem; border-radius: 0.25rem; border: 1px solid; cursor: pointer; text-align: left;">A. Pelem</button> <button class="smooth-transition" style="padding: 0.5rem; border-radius: 0.25rem; border: 1px solid; cursor: pointer; text-align: left;">B. Dhahar</button> <button class="smooth-transition" style="padding: 0.5rem; border-radius: 0.25rem; border: 1px solid; cursor: pointer; text-align: left;">C. Nedha</button>
+         </div>
+        </div>
+       </div>
+      </div>
+     </section><!-- Leadership Section -->
+     <section id="leadership" class="content-section section-hidden fade-in">
+      <div style="margin-bottom: 2rem;">
+       <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;"><span style="font-size: 3rem;">🌿</span>
+        <h2 style="font-size: 2rem; font-weight: bold;">Leadership</h2>
+       </div>
+       <p id="leadershipDesc" style="font-size: 1.1rem; opacity: 0.8;">Mengembangkan karakter kepemimpinan yang beretika, empatik, dan bertanggung jawab</p>
+      </div>
+      <div style="display: grid; gap: 1.5rem;">
+       <div id="topikLeadership" style="border-radius: 0.75rem; padding: 1.5rem; border: 2px solid;">
+        <h3 style="font-size: 1.3rem; font-weight: bold; margin-bottom: 1rem;">🎯 Topik Pembelajaran</h3>
+        <ul style="list-style: none; padding: 0; display: grid; gap: 0.75rem;">
+         <li style="padding: 0.75rem; border-radius: 0.5rem; border: 1px solid;">📱 Think Before You Click - Bijak Bermedia Sosial</li>
+         <li style="padding: 0.75rem; border-radius: 0.5rem; border: 1px solid;">💝 Empati &amp; Komunikasi Efektif</li>
+         <li style="padding: 0.75rem; border-radius: 0.5rem; border: 1px solid;">🪞 Refleksi Diri &amp; Perbaikan Sikap</li>
+         <li style="padding: 0.75rem; border-radius: 0.5rem; border: 1px solid;">🌟 Tanggung Jawab &amp; Integritas</li>
+        </ul>
+       </div>
+       <div id="refleksiLeadership" style="border-radius: 0.75rem; padding: 1.5rem; border: 2px solid;">
+        <h3 style="font-size: 1.3rem; font-weight: bold; margin-bottom: 1rem;">📝 Refleksi Mingguan</h3>
+        <form onsubmit="handleReflectionSubmit(event)" style="display: grid; gap: 1rem;">
+         <div><label for="reflectionName" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Nama:</label> <input type="text" id="reflectionName" style="width: 100%; padding: 0.75rem; border-radius: 0.5rem; border: 1px solid;" placeholder="Nama lengkap Anda">
+         </div>
+         <div><label for="reflectionText" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Refleksi Anda:</label> <textarea id="reflectionText" rows="4" style="width: 100%; padding: 0.75rem; border-radius: 0.5rem; border: 1px solid;" placeholder="Tuliskan refleksi Anda tentang pembelajaran minggu ini..."></textarea>
+         </div><button type="submit" class="smooth-transition" style="padding: 0.75rem 1.5rem; border-radius: 0.5rem; border: none; font-weight: 600; cursor: pointer;">Kirim Refleksi</button>
+        </form>
+        <div id="reflectionMessage" style="margin-top: 1rem; padding: 1rem; border-radius: 0.5rem; display: none;"></div>
+       </div>
+      </div>
+     </section><!-- Galeri Section -->
+     <section id="galeri" class="content-section section-hidden fade-in">
+      <div style="margin-bottom: 2rem;">
+       <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;"><span style="font-size: 3rem;">📸</span>
+        <h2 style="font-size: 2rem; font-weight: bold;">Galeri Siswa</h2>
+       </div>
+       <p style="font-size: 1.1rem; opacity: 0.8;">Dokumentasi kegiatan dan hasil karya siswa</p>
+      </div>
+      <div style="margin-bottom: 2rem; display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;"><button onclick="filterGallery('semua')" id="filterSemua" class="filter-btn smooth-transition" style="padding: 0.5rem 1.5rem; border-radius: 2rem; border: 2px solid; font-weight: 600; cursor: pointer;">Semua</button> <button onclick="filterGallery('informatika')" id="filterInformatika" class="filter-btn smooth-transition" style="padding: 0.5rem 1.5rem; border-radius: 2rem; border: 2px solid; font-weight: 600; cursor: pointer;">💻 Informatika</button> <button onclick="filterGallery('bahasa-jawa')" id="filterBahasaJawa" class="filter-btn smooth-transition" style="padding: 0.5rem 1.5rem; border-radius: 2rem; border: 2px solid; font-weight: 600; cursor: pointer;">🎭 Bahasa Jawa</button> <button onclick="filterGallery('leadership')" id="filterLeadership" class="filter-btn smooth-transition" style="padding: 0.5rem 1.5rem; border-radius: 2rem; border: 2px solid; font-weight: 600; cursor: pointer;">🌿 Leadership</button>
+      </div>
+      <div class="gallery-grid" id="galleryGrid"><!-- Gallery items will be populated by JavaScript -->
+      </div>
+     </section><!-- Kontak Section -->
+     <section id="kontak" class="content-section section-hidden fade-in">
+      <div style="margin-bottom: 2rem;">
+       <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;"><span style="font-size: 3rem;">💬</span>
+        <h2 style="font-size: 2rem; font-weight: bold;">Kontak Guru</h2>
+       </div>
+       <p style="font-size: 1.1rem; opacity: 0.8;">Hubungi guru untuk pertanyaan atau diskusi</p>
+      </div>
+      <div style="display: grid; gap: 2rem; max-width: 800px; margin: 0 auto;">
+       <div id="profilGuru" style="border-radius: 0.75rem; padding: 2rem; text-align: center; border: 2px solid;">
+        <div style="font-size: 4rem; margin-bottom: 1rem;">
+         👨‍🏫
+        </div>
+        <h3 id="teacherName" style="font-size: 1.5rem; font-weight: bold; margin-bottom: 0.5rem;">Nama Lengkap Guru</h3>
+        <p style="opacity: 0.8; margin-bottom: 0.5rem;">Pengajar: Informatika, Bahasa Jawa, Leadership</p>
+        <p id="teacherEmail" style="font-weight: 600;">guru@smaalmislim.sch.id</p>
+       </div>
+       <div id="formTanya" style="border-radius: 0.75rem; padding: 2rem; border: 2px solid;">
+        <h3 style="font-size: 1.3rem; font-weight: bold; margin-bottom: 1rem;">📧 Tanya Guru</h3>
+        <form onsubmit="handleContactSubmit(event)" style="display: grid; gap: 1rem;">
+         <div><label for="contactName" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Nama:</label> <input type="text" id="contactName" style="width: 100%; padding: 0.75rem; border-radius: 0.5rem; border: 1px solid;" placeholder="Nama lengkap Anda">
+         </div>
+         <div><label for="contactSubject" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Mata Pelajaran:</label> <select id="contactSubject" style="width: 100%; padding: 0.75rem; border-radius: 0.5rem; border: 1px solid;"> <option value="">Pilih mata pelajaran</option> <option value="informatika">Informatika</option> <option value="bahasa-jawa">Bahasa Jawa</option> <option value="leadership">Leadership</option> <option value="umum">Umum</option> </select>
+         </div>
+         <div><label for="contactMessage" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Pertanyaan:</label> <textarea id="contactMessage" rows="5" style="width: 100%; padding: 0.75rem; border-radius: 0.5rem; border: 1px solid;" placeholder="Tuliskan pertanyaan atau pesan Anda..."></textarea>
+         </div><button type="submit" class="smooth-transition" style="padding: 0.75rem 1.5rem; border-radius: 0.5rem; border: none; font-weight: 600; cursor: pointer;">Kirim Pesan</button>
+        </form>
+        <div id="contactMessage" style="margin-top: 1rem; padding: 1rem; border-radius: 0.5rem; display: none;"></div>
+       </div>
+       <div id="linkCepat" style="border-radius: 0.75rem; padding: 2rem; border: 2px solid;">
+        <h3 style="font-size: 1.3rem; font-weight: bold; margin-bottom: 1rem;">🔗 Akses Cepat</h3>
+        <div style="display: grid; gap: 0.75rem;"><a href="https://classroom.google.com" target="_blank" rel="noopener noreferrer" class="smooth-transition" style="padding: 1rem; border-radius: 0.5rem; text-decoration: none; display: block; border: 1px solid; text-align: center; font-weight: 600;"> 📚 Google Classroom </a> <a href="https://wa.me" target="_blank" rel="noopener noreferrer" class="smooth-transition" style="padding: 1rem; border-radius: 0.5rem; text-decoration: none; display: block; border: 1px solid; text-align: center; font-weight: 600;"> 💬 WhatsApp Group </a>
+        </div>
+       </div>
+      </div>
+     </section>
+    </div>
+   </main><!-- Footer -->
+   <footer id="footer" style="padding: 2rem 1.5rem; text-align: center; border-top: 1px solid; margin-top: 3rem;">
+    <p style="opacity: 0.8;">© 2024 SMA Al Muslim - Ruang Belajar Digital</p>
+    <p style="opacity: 0.6; font-size: 0.9rem; margin-top: 0.5rem;">Membangun Generasi Unggul Melalui Teknologi, Budaya, dan Kepemimpinan</p>
+   </footer>
+  </div>
+  <script>
+        const defaultConfig = {
+            background_color: "#f0f9ff",
+            card_color: "#ffffff",
+            text_color: "#1e293b",
+            informatika_color: "#3b82f6",
+            bahasa_jawa_color: "#d97706",
+            leadership_color: "#10b981",
+            site_title: "Ruang Belajar Digital SMA Al Muslim",
+            site_subtitle: "Memahami, Melakukan, dan Mengembangkan Potensi Melalui Teknologi, Budaya, dan Kepemimpinan",
+            teacher_name: "Nama Lengkap Guru",
+            teacher_email: "guru@smaalmislim.sch.id",
+            informatika_desc: "Belajar tentang cara kerja komputer, logika algoritma, dan teknologi masa depan",
+            bahasa_jawa_desc: "Melestarikan budaya Jawa melalui tembang, cerita, dan gelar wicara",
+            leadership_desc: "Mengembangkan karakter kepemimpinan yang beretika, empatik, dan bertanggung jawab"
+        };
+
+        let currentSection = 'beranda';
+        let currentFilter = 'semua';
+
+        const galleryItems = [
+            { id: 1, category: 'informatika', title: 'Proyek Scratch', icon: '💻', desc: 'Game interaktif buatan siswa' },
+            { id: 2, category: 'informatika', title: 'Desain 3D Tinkercad', icon: '🎨', desc: 'Model rumah pintar' },
+            { id: 3, category: 'bahasa-jawa', title: 'Gelar Wicara', icon: '🎤', desc: 'Presentasi upacara adat' },
+            { id: 4, category: 'bahasa-jawa', title: 'Tembang Macapat', icon: '🎵', desc: 'Penampilan siswa' },
+            { id: 5, category: 'leadership', title: 'Refleksi Mingguan', icon: '📝', desc: 'Jurnal kepemimpinan' },
+            { id: 6, category: 'leadership', title: 'Video Motivasi', icon: '🎬', desc: 'Pemimpin muda inspiratif' },
+            { id: 7, category: 'informatika', title: 'Algoritma Unplugged', icon: '🧩', desc: 'Aktivitas tanpa komputer' },
+            { id: 8, category: 'bahasa-jawa', title: 'Cerita Wayang', icon: '🎭', desc: 'Dramatisasi siswa' }
+        ];
+
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => {
+                section.classList.add('section-hidden');
+            });
+            
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.remove('section-hidden');
+                currentSection = sectionId;
+                
+                if (sectionId === 'galeri') {
+                    renderGallery();
+                }
+            }
+        }
+
+        function filterGallery(category) {
+            currentFilter = category;
+            renderGallery();
+            
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.style.opacity = '0.6';
+            });
+            document.getElementById('filter' + category.charAt(0).toUpperCase() + category.slice(1).replace('-', '')).style.opacity = '1';
+        }
+
+        function renderGallery() {
+            const grid = document.getElementById('galleryGrid');
+            const filteredItems = currentFilter === 'semua' 
+                ? galleryItems 
+                : galleryItems.filter(item => item.category === currentFilter);
+            
+            grid.innerHTML = filteredItems.map(item => `
+                <div class="card-hover smooth-transition" style="border-radius: 0.75rem; padding: 1.5rem; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); background-color: ${window.elementSdk?.config?.card_color || defaultConfig.card_color}; border: 2px solid ${getCategoryColor(item.category)};">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">${item.icon}</div>
+                    <h3 style="font-size: 1.2rem; font-weight: bold; margin-bottom: 0.5rem; color: ${window.elementSdk?.config?.text_color || defaultConfig.text_color};">${item.title}</h3>
+                    <p style="opacity: 0.8; color: ${window.elementSdk?.config?.text_color || defaultConfig.text_color};">${item.desc}</p>
+                </div>
+            `).join('');
+        }
+
+        function getCategoryColor(category) {
+            const config = window.elementSdk?.config || defaultConfig;
+            switch(category) {
+                case 'informatika': return config.informatika_color;
+                case 'bahasa-jawa': return config.bahasa_jawa_color;
+                case 'leadership': return config.leadership_color;
+                default: return config.text_color;
+            }
+        }
+
+        function handleReflectionSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('reflectionName').value;
+            const text = document.getElementById('reflectionText').value;
+            
+            if (name && text) {
+                const messageDiv = document.getElementById('reflectionMessage');
+                messageDiv.style.display = 'block';
+                messageDiv.style.backgroundColor = window.elementSdk?.config?.leadership_color || defaultConfig.leadership_color;
+                messageDiv.style.color = '#ffffff';
+                messageDiv.textContent = `Terima kasih ${name}! Refleksi Anda telah diterima.`;
+                
+                document.getElementById('reflectionName').value = '';
+                document.getElementById('reflectionText').value = '';
+                
+                setTimeout(() => {
+                    messageDiv.style.display = 'none';
+                }, 3000);
+            }
+        }
+
+        function handleContactSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('contactName').value;
+            const subject = document.getElementById('contactSubject').value;
+            const message = document.getElementById('contactMessage').value;
+            
+            if (name && subject && message) {
+                const messageDiv = document.getElementById('contactMessage');
+                messageDiv.style.display = 'block';
+                messageDiv.style.backgroundColor = window.elementSdk?.config?.informatika_color || defaultConfig.informatika_color;
+                messageDiv.style.color = '#ffffff';
+                messageDiv.textContent = `Terima kasih ${name}! Pesan Anda telah terkirim. Guru akan segera merespons.`;
+                
+                document.getElementById('contactName').value = '';
+                document.getElementById('contactSubject').value = '';
+                document.getElementById('contactMessage').value = '';
+                
+                setTimeout(() => {
+                    messageDiv.style.display = 'none';
+                }, 3000);
+            }
+        }
+
+        async function onConfigChange(config) {
+            const backgroundColor = config.background_color || defaultConfig.background_color;
+            const cardColor = config.card_color || defaultConfig.card_color;
+            const textColor = config.text_color || defaultConfig.text_color;
+            const informatikaColor = config.informatika_color || defaultConfig.informatika_color;
+            const bahasaJawaColor = config.bahasa_jawa_color || defaultConfig.bahasa_jawa_color;
+            const leadershipColor = config.leadership_color || defaultConfig.leadership_color;
+
+            document.body.style.backgroundColor = backgroundColor;
+            document.body.style.color = textColor;
+
+            document.getElementById('header').style.backgroundColor = cardColor;
+            document.getElementById('header').style.color = textColor;
+            
+            document.getElementById('navigation').style.backgroundColor = cardColor;
+            document.getElementById('navigation').style.borderColor = textColor + '20';
+            
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.style.color = textColor;
+            });
+            
+            document.querySelectorAll('.nav-link::after').forEach(link => {
+                link.style.backgroundColor = textColor;
+            });
+
+            document.getElementById('cardInformatika').style.backgroundColor = informatikaColor + '15';
+            document.getElementById('cardInformatika').style.borderColor = informatikaColor;
+            document.querySelector('#cardInformatika button').style.backgroundColor = informatikaColor;
+            document.querySelector('#cardInformatika button').style.color = '#ffffff';
+
+            document.getElementById('cardBahasaJawa').style.backgroundColor = bahasaJawaColor + '15';
+            document.getElementById('cardBahasaJawa').style.borderColor = bahasaJawaColor;
+            document.querySelector('#cardBahasaJawa button').style.backgroundColor = bahasaJawaColor;
+            document.querySelector('#cardBahasaJawa button').style.color = '#ffffff';
+
+            document.getElementById('cardLeadership').style.backgroundColor = leadershipColor + '15';
+            document.getElementById('cardLeadership').style.borderColor = leadershipColor;
+            document.querySelector('#cardLeadership button').style.backgroundColor = leadershipColor;
+            document.querySelector('#cardLeadership button').style.color = '#ffffff';
+
+            document.getElementById('materiInformatika').style.backgroundColor = informatikaColor + '10';
+            document.getElementById('materiInformatika').style.borderColor = informatikaColor;
+            document.getElementById('toolsInformatika').style.backgroundColor = informatikaColor + '10';
+            document.getElementById('toolsInformatika').style.borderColor = informatikaColor;
+            document.getElementById('tugasInformatika').style.backgroundColor = informatikaColor + '10';
+            document.getElementById('tugasInformatika').style.borderColor = informatikaColor;
+            document.querySelector('#tugasInformatika button').style.backgroundColor = informatikaColor;
+            document.querySelector('#tugasInformatika button').style.color = '#ffffff';
+
+            document.getElementById('materiBahasaJawa').style.backgroundColor = bahasaJawaColor + '10';
+            document.getElementById('materiBahasaJawa').style.borderColor = bahasaJawaColor;
+            document.getElementById('latihanBahasaJawa').style.backgroundColor = bahasaJawaColor + '10';
+            document.getElementById('latihanBahasaJawa').style.borderColor = bahasaJawaColor;
+
+            document.getElementById('topikLeadership').style.backgroundColor = leadershipColor + '10';
+            document.getElementById('topikLeadership').style.borderColor = leadershipColor;
+            document.getElementById('refleksiLeadership').style.backgroundColor = leadershipColor + '10';
+            document.getElementById('refleksiLeadership').style.borderColor = leadershipColor;
+            document.querySelector('#refleksiLeadership button[type="submit"]').style.backgroundColor = leadershipColor;
+            document.querySelector('#refleksiLeadership button[type="submit"]').style.color = '#ffffff';
+
+            document.getElementById('filterSemua').style.borderColor = textColor;
+            document.getElementById('filterSemua').style.color = textColor;
+            document.getElementById('filterInformatika').style.borderColor = informatikaColor;
+            document.getElementById('filterInformatika').style.color = informatikaColor;
+            document.getElementById('filterBahasaJawa').style.borderColor = bahasaJawaColor;
+            document.getElementById('filterBahasaJawa').style.color = bahasaJawaColor;
+            document.getElementById('filterLeadership').style.borderColor = leadershipColor;
+            document.getElementById('filterLeadership').style.color = leadershipColor;
+
+            document.getElementById('profilGuru').style.backgroundColor = cardColor;
+            document.getElementById('profilGuru').style.borderColor = textColor + '30';
+            document.getElementById('formTanya').style.backgroundColor = cardColor;
+            document.getElementById('formTanya').style.borderColor = textColor + '30';
+            document.querySelector('#formTanya button[type="submit"]').style.backgroundColor = informatikaColor;
+            document.querySelector('#formTanya button[type="submit"]').style.color = '#ffffff';
+            document.getElementById('linkCepat').style.backgroundColor = cardColor;
+            document.getElementById('linkCepat').style.borderColor = textColor + '30';
+
+            document.getElementById('footer').style.backgroundColor = cardColor;
+            document.getElementById('footer').style.borderColor = textColor + '20';
+            document.getElementById('footer').style.color = textColor;
+
+            document.getElementById('siteTitle').textContent = config.site_title || defaultConfig.site_title;
+            document.getElementById('siteSubtitle').textContent = config.site_subtitle || defaultConfig.site_subtitle;
+            document.getElementById('teacherName').textContent = config.teacher_name || defaultConfig.teacher_name;
+            document.getElementById('teacherEmail').textContent = config.teacher_email || defaultConfig.teacher_email;
+            
+            document.getElementById('informatikaDesc').textContent = config.informatika_desc || defaultConfig.informatika_desc;
+            document.getElementById('informatikaDescHome').textContent = config.informatika_desc || defaultConfig.informatika_desc;
+            document.getElementById('bahasaJawaDesc').textContent = config.bahasa_jawa_desc || defaultConfig.bahasa_jawa_desc;
+            document.getElementById('bahasaJawaDescHome').textContent = config.bahasa_jawa_desc || defaultConfig.bahasa_jawa_desc;
+            document.getElementById('leadershipDesc').textContent = config.leadership_desc || defaultConfig.leadership_desc;
+            document.getElementById('leadershipDescHome').textContent = config.leadership_desc || defaultConfig.leadership_desc;
+
+            if (currentSection === 'galeri') {
+                renderGallery();
+            }
+        }
+
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig: defaultConfig,
+                onConfigChange: onConfigChange,
+                mapToCapabilities: (config) => ({
+                    recolorables: [
+                        {
+                            get: () => config.background_color || defaultConfig.background_color,
+                            set: (value) => {
+                                config.background_color = value;
+                                window.elementSdk.setConfig({ background_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.card_color || defaultConfig.card_color,
+                            set: (value) => {
+                                config.card_color = value;
+                                window.elementSdk.setConfig({ card_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.text_color || defaultConfig.text_color,
+                            set: (value) => {
+                                config.text_color = value;
+                                window.elementSdk.setConfig({ text_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.informatika_color || defaultConfig.informatika_color,
+                            set: (value) => {
+                                config.informatika_color = value;
+                                window.elementSdk.setConfig({ informatika_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.bahasa_jawa_color || defaultConfig.bahasa_jawa_color,
+                            set: (value) => {
+                                config.bahasa_jawa_color = value;
+                                window.elementSdk.setConfig({ bahasa_jawa_color: value });
+                            }
+                        }
+                    ],
+                    borderables: [],
+                    fontEditable: undefined,
+                    fontSizeable: undefined
+                }),
+                mapToEditPanelValues: (config) => new Map([
+                    ["site_title", config.site_title || defaultConfig.site_title],
+                    ["site_subtitle", config.site_subtitle || defaultConfig.site_subtitle],
+                    ["teacher_name", config.teacher_name || defaultConfig.teacher_name],
+                    ["teacher_email", config.teacher_email || defaultConfig.teacher_email],
+                    ["informatika_desc", config.informatika_desc || defaultConfig.informatika_desc],
+                    ["bahasa_jawa_desc", config.bahasa_jawa_desc || defaultConfig.bahasa_jawa_desc],
+                    ["leadership_desc", config.leadership_desc || defaultConfig.leadership_desc]
+                ])
+            });
+        }
+
+        renderGallery();
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9998e569d026fd67',t:'MTc2MjMwOTQ4MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
